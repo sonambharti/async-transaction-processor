@@ -3,7 +3,7 @@ services:
     name: transaction-webhook-service
     runtime: docker
     plan: starter
-    region: singapore
+    region: frankfurt
     healthCheckPath: /
     autoDeploy: true
     envVars:

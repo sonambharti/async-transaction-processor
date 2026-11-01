@@ -24,6 +24,7 @@ To change a decision, add a new entry and mark the old one `Superseded`. Do not 
 | D-014 | Treat the developer console as optional | Superseded by D-015 |
 | D-015 | Build the console in Next.js and keep the service in Python | Accepted |
 | D-016 | Use 10 API connections and a 400 ms database budget | Accepted |
+| D-017 | Host Render in Frankfurt, nearest to the Supabase project | Accepted |
 
 ---
 
@@ -210,3 +211,14 @@ To change a decision, add a new entry and mark the old one `Superseded`. Do not 
 - Disable `synchronous_commit` for faster inserts: rejected, because a 202 must mean the row is durable.
 
 **Consequences:** Local bursts of 200 return all 202s, the slowest at 299 ms. Together with the worker pool, the service can use 13 connections, which must fit the database plan. A remote database adds a network round trip to each insert, so measure on the deployed service.
+
+## D-017: Host Render in Frankfurt, nearest to the Supabase project
+
+**Context:** The Supabase project was created in Ireland (`eu-west-1`), not Singapore as D-011 planned. Render has no Ireland region. Inserts from a machine far from the database took at least 360 ms and caused 503s.
+
+**Decision:** Set the Render region to Frankfurt. This replaces D-011's Singapore region.
+
+**Alternatives:**
+- Recreate the Supabase project in Singapore: possible, but the existing project works, and any matching pair of regions is equally valid.
+
+**Consequences:** The API and database are in nearby regions, but not the same one. Burst latency must be measured on the deployed service. A machine far from the database needs a larger `DB_COMMAND_TIMEOUT_SECONDS`, set in its own `.env`.

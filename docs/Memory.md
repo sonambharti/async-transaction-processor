@@ -15,7 +15,7 @@ It does not repeat other documents:
 
 ## Current state
 
-**Last updated:** 2026-10-31
+**Last updated:** 2026-11-01
 
 **Phase:** Built and tested locally. Publishing and deployment remain.
 
@@ -27,10 +27,10 @@ It does not repeat other documents:
 | Tests | Passing locally |
 | README | Done, except the public URLs |
 | Git repository | Not initialized |
-| Cloud database | Not provisioned |
+| Cloud database | Supabase project connected from local |
 | Deployment | Not started |
 
-**Next step:** Create the GitHub repo, provision Supabase, deploy to Render and Vercel, then run the smoke and load tests against the public URL.
+**Next step:** Create the GitHub repo, deploy to Render and Vercel, then run the smoke and load tests against the public URL.
 
 ## Project facts
 
@@ -62,7 +62,7 @@ It does not repeat other documents:
 |---|---|---|
 | Render plan behavior and price | Deployment | D-010 |
 | Supabase Pool Size is at least 13, and inactivity rules | Deployment | D-011 |
-| Render and Supabase regions match | Meeting the 500 ms target | D-010, D-011 |
+| Webhook latency from Frankfurt to Ireland | Meeting the 500 ms target | D-016, D-017 |
 
 ## Deployment details
 
@@ -72,12 +72,18 @@ Fill these in once they exist. Never record secrets here, because this file is p
 |---|---|
 | GitHub repo URL | Not created |
 | Public API URL | Not deployed |
-| Render region | Singapore (`render.yaml`) |
-| Supabase region | Singapore, once the project is created |
+| Render region | Frankfurt (`render.yaml`) |
+| Supabase region | Ireland, `eu-west-1` (D-017) |
 
 ## Session log
 
 Add new entries at the top. Keep each one to what changed and anything the next session needs.
+
+### 2026-11-01: Supabase connection
+
+- Connected the local API to Supabase through the session pooler and passed the smoke test.
+- The project is in Ireland, so the Render region moved to Frankfurt (D-017).
+- Added `CLAUDE.md` with session context.
 
 ### 2026-10-31: Build
 

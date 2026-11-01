@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Source** | Full Stack Developer Assessment - Backend Task (PDF) |
-| **Estimated effort** | 2–3 hours |
+| **Estimated effort** | 4-5 hours |
 | **Deadline** | 24–36 hours from receipt |
 | **Status** | Draft for implementation |
 
