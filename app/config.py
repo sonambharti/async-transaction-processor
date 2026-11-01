@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     worker_concurrency: int = 200
     db_command_timeout_seconds: float = 0.4
     worker_db_timeout_seconds: float = 5
-    api_pool_size: int = 10
+    api_pool_size: int = 5
     worker_pool_size: int = 3
     max_body_bytes: int = 16_384
     cors_origins: str = ""
